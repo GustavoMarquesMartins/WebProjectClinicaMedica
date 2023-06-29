@@ -1,6 +1,7 @@
 package br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP;
 
- import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import br.com.NexusSolutions.WebProjectClinicaMedica.Model.Domain.Funcionario;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.*;
 
@@ -13,5 +14,6 @@ import lombok.*;
 public class MedicoRequest {
     private Long id; // Identificador único do médico
     private String nome; // Nome do médico
+    private Funcionario funcionario;
     private String celular; // Número de celular do médico
 }

@@ -2,7 +2,9 @@ package br.com.NexusSolutions.WebProjectClinicaMedica.Model.Repository;
 
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.Domain.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
     // Interface que define o repositório para a entidade Medico
     // Extende a interface JpaRepository fornecida pelo Spring Data JPA

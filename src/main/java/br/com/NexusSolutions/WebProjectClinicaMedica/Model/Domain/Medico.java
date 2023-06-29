@@ -18,11 +18,11 @@ public class Medico {
 
     private String nome; // Nome do médico
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     // Associação muitos-para-um com a entidade 'Funcionario'
     @JoinColumn(name = "funcionario_id", referencedColumnName = "id")
     // Coluna de junção referenciando a chave primária da tabela 'funcionarios'
     private Funcionario funcionario; // Funcionário associado ao médico
 
-    private String celular; // Número de celular do médico
+    private String celular; // Número de celular do médico;
 }
