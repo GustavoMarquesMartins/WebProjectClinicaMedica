@@ -1,6 +1,7 @@
 package br.com.NexusSolutions.WebProjectClinicaMedica.Controller;
 
 import br.com.NexusSolutions.WebProjectClinicaMedica.Exception.NaoEncontradoException;
+import br.com.NexusSolutions.WebProjectClinicaMedica.Exception.RegraDeNegocioException;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoDeleteRequest;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoRequest;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoResponse;
@@ -26,10 +27,9 @@ public class MedicoController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public MedicoResponse cadastrar(@RequestBody MedicoRequest medicoRequest) {
-        return medicoServico.cadastrar(medicoRequest);
+    public MedicoResponse cadastrar(@RequestBody MedicoRequest medicoRequest) throws RegraDeNegocioException {
+        return medicoServico.salvar(medicoRequest);
     }
-
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @GetMapping

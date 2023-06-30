@@ -4,7 +4,9 @@ import br.com.NexusSolutions.WebProjectClinicaMedica.Model.Domain.Funcionario;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Builder // Anotação do Lombok para gerar um construtor padrão Builder
 @Getter // Anotação do Lombok para gerar os métodos getters
 @Setter // Anotação do Lombok para gerar os métodos setters

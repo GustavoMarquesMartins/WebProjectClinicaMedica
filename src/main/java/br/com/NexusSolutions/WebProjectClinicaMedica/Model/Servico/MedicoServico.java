@@ -1,11 +1,13 @@
 package br.com.NexusSolutions.WebProjectClinicaMedica.Model.Servico;
 
 import br.com.NexusSolutions.WebProjectClinicaMedica.Exception.NaoEncontradoException;
+import br.com.NexusSolutions.WebProjectClinicaMedica.Exception.RegraDeNegocioException;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.Domain.Medico;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoDeleteRequest;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoRequest;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.HTTP.MedicoResponse;
 import br.com.NexusSolutions.WebProjectClinicaMedica.Model.Repository.MedicoRepository;
+import br.com.NexusSolutions.WebProjectClinicaMedica.validations.MedicoValidacao;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,14 @@ public class MedicoServico {
     private MedicoRepository medicoRepository;
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private MedicoValidacao medicoValidacao;
+
+
+    public MedicoResponse salvar(MedicoRequest medicoRequest) throws RegraDeNegocioException {
+        medicoValidacao.validarParametros(medicoRequest);
+        return cadastrar(medicoRequest);
+    }
 
     public MedicoResponse cadastrar(MedicoRequest medicoRequest) {
         Medico medico = modelMapper.map(medicoRequest, Medico.class);
